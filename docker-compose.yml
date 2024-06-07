@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  redirect:
+    image: redirect
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    environment:
+      - PORT=3000
+      - TOKEN=your_bearer_token_here
+    volumes:
+      - ./data.json:/usr/src/app/data.json
+    restart: unless-stopped
